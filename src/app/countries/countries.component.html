@@ -1,0 +1,29 @@
+<div class="container p-5">
+  <div class="container">
+    <h1 class="display-4 text-center my-4">Listado de países</h1>
+  </div>
+  <input class="form-control" type="text" placeholder="Buscar" [formControl]="searchText">
+  <br>
+
+  <table class="table table-hover table-striped" *ngIf="searchText.value?.length && countries.length">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Población</th>
+        <th>Porcentaje de habitantes sobre total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let country of countries">
+        <td>{{country.name}}</td>
+        <td>{{country.populationNumber}}</td>
+        <td>{{country.percentageOfPopulation}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="alert alert-warning" role="alert" *ngIf="!countries.length">
+    No se encontraron resultados
+  </div>
+
+</div>
